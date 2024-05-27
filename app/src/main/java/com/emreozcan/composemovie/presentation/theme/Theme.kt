@@ -1,4 +1,4 @@
-package com.emreozcan.composemovie.ui.theme
+package com.emreozcan.composemovie.presentation.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.emreozcan.composemovie.ui.theme
+package com.emreozcan.composemovie.presentation.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
