@@ -3,6 +3,7 @@ package com.emreozcan.composemovie.data.di
 import androidx.core.os.BuildCompat
 import com.emreozcan.composemovie.BuildConfig
 import com.emreozcan.composemovie.data.remote.service.MovieService
+import com.emreozcan.composemovie.domain.repository.MovieListRepository
 import com.emreozcan.composemovie.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -20,7 +21,7 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
 
     @Singleton
     @Provides
