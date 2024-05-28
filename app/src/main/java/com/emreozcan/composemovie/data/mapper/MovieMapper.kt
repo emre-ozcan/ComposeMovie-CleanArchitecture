@@ -21,7 +21,9 @@ object MovieMapper {
         poster = movieDetailDto?.poster ?: "",
         title = movieDetailDto?.title ?: "",
         year = movieDetailDto?.year ?: "",
-        language = movieDetailDto?.language ?: "Unknown"
+        language = movieDetailDto?.language ?: "Unknown",
+        plot = movieDetailDto?.plot ?: "Unknown",
+        runtime = movieDetailDto?.runtime ?: "Unknown",
     )
 
 }

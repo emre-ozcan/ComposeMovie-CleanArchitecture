@@ -15,8 +15,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.emreozcan.composemovie.presentation.movieDetail.MovieDetailScreen
 import com.emreozcan.composemovie.presentation.movieList.views.MovieListScreen
 import com.emreozcan.composemovie.presentation.theme.ComposeMovieTheme
+import com.emreozcan.composemovie.utils.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -25,6 +27,7 @@ class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
             ComposeMovieTheme {
                 Scaffold {
@@ -36,8 +39,8 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screens.MovieListScreen.route) {
                             MovieListScreen(navController = navController)
                         }
-                        composable(route = Screens.MovieDetailScreen.route) {
-
+                        composable(route = Screens.MovieDetailScreen.route + "/{${IMDB_ID}}") {
+                            MovieDetailScreen(navController = navController)
                         }
                     }
                 }

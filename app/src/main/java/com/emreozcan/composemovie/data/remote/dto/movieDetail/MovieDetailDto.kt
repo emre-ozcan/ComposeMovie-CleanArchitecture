@@ -23,5 +23,7 @@ data class MovieDetailDto(
     @SerializedName("Type")
     val type: String?,
     @SerializedName("Year")
-    val year: String?
+    val year: String?,
+    @SerializedName("Plot")
+    val plot: String?
 )
