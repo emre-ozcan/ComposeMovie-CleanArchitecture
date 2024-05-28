@@ -24,10 +24,12 @@ fun MovieSearchBar(
     onSearch: (String) -> Unit = {},
     body: @Composable () -> Unit
 ) {
+    
     var text by remember { mutableStateOf("") }
     var showClearIcon by remember {
         mutableStateOf(false)
     }
+
     SearchBar(query = text,
         onQueryChange = {
             showClearIcon = text.isNotBlank() && text.isNotEmpty()

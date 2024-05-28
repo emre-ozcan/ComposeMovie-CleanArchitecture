@@ -21,7 +21,7 @@ fun ProgressBar() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ProgressBarPreview() {
     ProgressBar()

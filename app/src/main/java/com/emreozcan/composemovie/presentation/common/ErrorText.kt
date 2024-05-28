@@ -1,5 +1,6 @@
 package com.emreozcan.composemovie.presentation.common
 
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,7 +33,7 @@ fun ErrorText(text: String) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ErrorTextPreview() {
     ErrorText(text = "No movie found :(")
