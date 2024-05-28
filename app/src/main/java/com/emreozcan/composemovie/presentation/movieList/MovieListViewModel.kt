@@ -8,6 +8,7 @@ import com.emreozcan.composemovie.domain.useCase.movieList.GetMovieListUseCase
 import com.emreozcan.composemovie.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -41,24 +42,21 @@ class MovieListViewModel @Inject constructor(
     private fun getMovieList(search: String) {
         job?.cancel()
 
-        job = viewModelScope.launch {
-            getMovieListUseCase.invoke(search).onEach { resource ->
-                when (resource) {
-                    is Resource.Success -> {
-                        _state.value = MovieListState(movieList = resource.data ?: emptyList())
-                    }
+        job = getMovieListUseCase.invoke(search).onEach { resource ->
+            when (resource) {
+                is Resource.Success -> {
+                    _state.value = MovieListState(movieList = resource.data ?: emptyList())
+                }
 
-                    is Resource.Loading -> {
-                        _state.value = MovieListState(isLoading = true)
-                    }
+                is Resource.Loading -> {
+                    _state.value = MovieListState(isLoading = true)
+                }
 
-                    is Resource.Error -> {
-                        _state.value =
-                            MovieListState(error = resource.message ?: "An error occurred")
-                    }
+                is Resource.Error -> {
+                    _state.value = MovieListState(error = resource.message ?: "An error occurred")
                 }
             }
-        }
+        }.launchIn(viewModelScope)
     }
 
 }

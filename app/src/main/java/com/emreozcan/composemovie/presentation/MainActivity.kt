@@ -1,5 +1,6 @@
 package com.emreozcan.composemovie.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,15 +22,16 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ComposeMovieTheme {
                 Scaffold {
                     val navController = rememberNavController()
                     NavHost(
-                        navController = navController, startDestination = Screens.MovieListScreen.route
+                        navController = navController,
+                        startDestination = Screens.MovieListScreen.route
                     ) {
                         composable(route = Screens.MovieListScreen.route) {
                             MovieListScreen(navController = navController)
